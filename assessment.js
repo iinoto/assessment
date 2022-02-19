@@ -5,17 +5,11 @@ const resultDivided = document.getElementById('result-area');
 const tweetDivided = document.getElementById('tweet-area');
 
 assessmentButton.onclick = () => {
-  userNameInput.onkeydown = event => {
-    if(event.key === 'Enter'){
-      assessmentButton.onclick();
-    }
-  };
-  const userName = userNameInput.value;
+  const userName = userNameInput.value
   if (userName.length === 0){
     //名前がからの時は処理を終了する
     return;
 }
-
   //TODO 診断結果表示エリアの作成
   resultDivided.innerText = "";
   const header = document.createElement('h3');
@@ -45,6 +39,14 @@ const script = document.createElement('script');
 script.setAttribute('src','https://platform.twitter.com/widgets.js');
 tweetDivided.appendChild(script);
 };
+
+//Enterが押された時
+userNameInput.onkeydown = event => {
+if(event.key === 'Enter'){
+  assessmentButton.onclick();
+}
+};
+const userName = userNameInput.value;
 
 const answers = [
   '{userName}のいいところは声です。{userName}の特徴的な声は皆を惹きつけ、心に残ります。',
@@ -95,4 +97,5 @@ console.assert(
   assessment('太郎')===assessment('太郎'),
   '入力が同じ名前なら同じ診断結果を出力する処理が正しくありません'
 );
+
 
